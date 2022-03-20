@@ -76,15 +76,16 @@ namespace FinalProject.Manager
         {
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine(message);
+            Console.Beep(5000, 1000);
             Console.ResetColor();
         }
 
         public static DateTime ReadDate(string caption)
         {
         l1:
-            Console.Write($"{caption} [dd.MM.yyyy]");
+            Console.Write($"{caption} [yyyy]");
 
-            if (!DateTime.TryParseExact(Console.ReadLine(), "dd.MM.yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime value))
+            if (!DateTime.TryParseExact(Console.ReadLine(), "yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime value))
             {
                 PrintError("Duzgun Muelumat Deyil,Yeniden Cehd Edin");
                 goto l1;
@@ -92,5 +93,20 @@ namespace FinalProject.Manager
             Console.ResetColor();
             return value;
         }
+
+        public static FuelType FuelType(string caption)
+        {
+        l1:
+            Console.Write(caption);
+
+            if (!Enum.TryParse(Console.ReadLine(), out FuelType m))
+            {
+                PrintError("Menudan Secin");
+                goto l1;
+            }
+            Console.ResetColor();
+            return m;
+        }
+
     }
 }

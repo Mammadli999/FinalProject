@@ -119,6 +119,31 @@ namespace FinalProject
                     c.Color = ScannerManager.ReadString("Enter the Car's Color: ");
                     c.Engine = ScannerManager.ReadDouble("Enther the Car's Engine: ");
 
+                    PrintFuelMenu();
+                    FuelType menuNum4 = ScannerManager.FuelType("Select the type a fuel: ");
+
+                    switch (menuNum4)
+                    {
+                        case FuelType.Gasoline:
+                            c.FuelType = nameof(FuelType.Gasoline);
+                            break;
+                        case FuelType.Diesel:
+                            c.FuelType = nameof(FuelType.Diesel);
+                            break;
+                        case FuelType.Hybrid:
+                            c.FuelType = nameof(FuelType.Hybrid);
+                            break;
+                        case FuelType.Electro:
+                            c.FuelType = nameof(FuelType.Electro);
+                            break;
+                        case FuelType.Gas:
+                            c.FuelType = nameof(FuelType.Gas);
+                            break;
+                        default:
+                            break;
+                    }
+
+
                     ShowAllModel(modelMsr);
                     c.ModelId1 = ScannerManager.ReadInteger("Enter the Car's ID: ");
 
@@ -131,7 +156,7 @@ namespace FinalProject
                     ShowAllCar(carMsr);
                     Console.WriteLine("Change for Model's ID ==> 1 || Change for Year ==> 2 " +
                         "Change for Price ==> 3 || Change for Color ==> 4 " +
-                        "Change for Engine ==> 5 " );
+                        "Change for Engine ==> 5 || Change for FuelType ==> 6 " );
                     bool success2 = int.TryParse(Console.ReadLine(), out int menuNumber2);
                     if (success2 && menuNumber2 == 1)
                     {
@@ -157,6 +182,12 @@ namespace FinalProject
                     {
                         int value1 = ScannerManager.ReadInteger("Enter the ID of choosen Model: ");
                         carMsr.CarEditEngine(value1);
+                    }else if (success2 && menuNumber2 == 6)
+                    {
+                        int value1 = ScannerManager.ReadInteger("Enter the ID of choosen Model: ");
+                        Console.Clear();
+                        PrintFuelMenu();
+                        carMsr.CarEditFuelType(value1);
                     }
 
                     goto case Menu.CarAll;
@@ -196,13 +227,27 @@ namespace FinalProject
             }
             
         }
-        static void PrintMenu()
+
+    static void PrintMenu()
         {
             Console.WriteLine(new string('-', Console.WindowWidth));
 
             foreach (var item in Enum.GetNames(typeof(Menu)))
             {
                 Menu m = (Menu)Enum.Parse(typeof(Menu), item);
+
+                Console.WriteLine($"{((byte)m).ToString().PadLeft(2)}. {item}");
+            }
+            Console.WriteLine($"{new string('-', Console.WindowWidth)}\n");
+        }
+
+        static void PrintFuelMenu()
+        {
+            Console.WriteLine(new string('-', Console.WindowWidth));
+
+            foreach (var item in Enum.GetNames(typeof(FuelType)))
+            {
+                FuelType m = (FuelType)Enum.Parse(typeof(FuelType), item);
 
                 Console.WriteLine($"{((byte)m).ToString().PadLeft(2)}. {item}");
             }

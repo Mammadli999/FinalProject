@@ -11,7 +11,7 @@ namespace FinalProject.Infrastructure
         Gasoline = 1,
         Diesel,
         Hybrid,
-        Elctro,
+        Electro,
         Gas
     }
 }

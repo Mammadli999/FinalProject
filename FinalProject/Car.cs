@@ -20,11 +20,13 @@ namespace FinalProject
         public double Price { get; set; }
         public string Color { get; set; }
         public double Engine { get; set; }
+        public string FuelType { get; set; }
 
         public override string ToString()
         {
             return $"Model ID: {ModelId1}\n" + $"Car ID: {CarId}\n" + $"Year: {Year}\n" + $"Price: {Price}\n" + $"Color: {Color}\n" +
-                $"Engine: {Engine}";
+                $"Engine: {Engine}\n" +
+                $"FuelType: {FuelType}";
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using FinalProject.Manager;
+﻿using FinalProject.Infrastructure;
+using FinalProject.Manager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -125,6 +126,40 @@ namespace FinalProject.Managers
                 }
             }
         }
+
+        public void CarEditFuelType(int value)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i].CarId == value)
+                {
+                    Console.WriteLine("Change the FuelType: ");
+                    FuelType menuNum4 = ScannerManager.FuelType("Select the type a fuel: ");
+
+                    switch (menuNum4)
+                    {
+                        case FuelType.Gasoline:
+                            data[i].FuelType = nameof(FuelType.Gasoline);
+                            break;
+                        case FuelType.Diesel:
+                            data[i].FuelType = nameof(FuelType.Diesel);
+                            break;
+                        case FuelType.Hybrid:
+                            data[i].FuelType = nameof(FuelType.Hybrid);
+                            break;
+                        case FuelType.Electro:
+                            data[i].FuelType = nameof(FuelType.Electro);
+                            break;
+                        case FuelType.Gas:
+                            data[i].FuelType = nameof(FuelType.Gas);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+        }
+
 
         public Car[] GetAll()
         {
