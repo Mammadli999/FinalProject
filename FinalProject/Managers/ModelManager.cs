@@ -86,7 +86,6 @@ namespace FinalProject.Managers
         {
             for (int i = 0; i < data.Length; i++)
             {
-                Console.WriteLine("Change The Model Name: ");
             EditAgain:
                 string NewModel = ScannerManager.ReadString("Enter the New Model: ");
                 CheckModelName(NewModel);
