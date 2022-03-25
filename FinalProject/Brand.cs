@@ -21,8 +21,7 @@ namespace FinalProject
 
         public override string ToString()
         {
-            return $"Brand Id: {BrandId}\n" +
-                $"Brand Name: {Name}";
+            return $"Brand ID: {BrandId} || Brand Name: {Name}";
         }
     }
 }

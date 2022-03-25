@@ -18,7 +18,7 @@ namespace FinalProject.Manager
 
             if (!int.TryParse(Console.ReadLine(), out int value))
             {
-                PrintError("Duzgun Muelumat Deyil,Yeniden Cehd Edin");
+                PrintError("It is Not True Information, Try Again: ");
                 goto l1;
             }
 
@@ -33,7 +33,7 @@ namespace FinalProject.Manager
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             if (!double.TryParse(Console.ReadLine(), out double value))
             {
-                PrintError("Duzgun Muelumat Deyil,Yeniden Cehd Edin");
+                PrintError("It is Not True Information, Try Again: ");
                 goto l1;
             }
 
@@ -50,7 +50,7 @@ namespace FinalProject.Manager
 
             if (string.IsNullOrWhiteSpace(value))
             {
-                PrintError("Duzgun Muelumat Deyil,Yeniden Cehd Edin");
+                PrintError("It is Not True Information, Try Again: ");
                 goto l1;
             }
 
@@ -65,7 +65,7 @@ namespace FinalProject.Manager
 
             if (!Enum.TryParse(Console.ReadLine(), out Menu m))
             {
-                PrintError("Menudan Secin");
+                PrintError("Select from the Menu: ");
                 goto l1;
             }
             Console.ResetColor();
@@ -84,10 +84,10 @@ namespace FinalProject.Manager
         {
         l1:
             Console.Write($"{caption} [yyyy]");
-
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
             if (!DateTime.TryParseExact(Console.ReadLine(), "yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime value))
             {
-                PrintError("Duzgun Muelumat Deyil,Yeniden Cehd Edin");
+                PrintError("It is Not True Information, Try Again: ");
                 goto l1;
             }
             Console.ResetColor();
@@ -101,7 +101,7 @@ namespace FinalProject.Manager
 
             if (!Enum.TryParse(Console.ReadLine(), out FuelType m))
             {
-                PrintError("Menudan Secin");
+                PrintError("Select from the Menu: ");
                 goto l1;
             }
             Console.ResetColor();

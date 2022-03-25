@@ -24,9 +24,8 @@ namespace FinalProject
 
         public override string ToString()
         {
-            return $"Model ID: {ModelId1}\n" + $"Car ID: {CarId}\n" + $"Year: {Year}\n" + $"Price: {Price}\n" + $"Color: {Color}\n" +
-                $"Engine: {Engine}\n" +
-                $"FuelType: {FuelType}";
+            return $"Model ID: {ModelId1} || Car ID: {CarId} || Year: {Year:yyyy} || Price: {Price}$ || Color: {Color} || Engine: {Engine}  || FuelType: {FuelType}";
+
         }
 
     }

@@ -46,27 +46,51 @@ namespace FinalProject.Managers
             {
                 if (data[i].BrandId == value)
                 {
-                    singleBrand = $"Brand ID: {data[i].BrandId}\n" +
-                        $"Brand's Name: {data[i].Name}";
+                    singleBrand = $"Brand ID: {data[i].BrandId} || Brand's Name: {data[i].Name}";
                 }
             }
+            Console.WriteLine("#################Choosen Brand##################");
             Console.WriteLine(singleBrand);
         }
 
+        public bool CheckBrandName(string name)
+        {
+            name = name.ToLower().Trim();
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data != null)
+                {
+                    if (data[i].Name.ToLower() == name)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
         
         public void BrandEdit(int value)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i].BrandId == value)
+                Console.WriteLine("Change The Brand Name: ");
+            EditAgain:
+                string NewBrand = ScannerManager.ReadString("Enter the New Brand: ");
+                CheckBrandName(NewBrand);
+                if (CheckBrandName(NewBrand) == false)
                 {
-                    Console.WriteLine("Choose your Group : ");
-                    string NewBrand = ScannerManager.ReadString("Enter the New Brand: ");
+                    ScannerManager.PrintError("This Name is Already Used! ");
+                    goto EditAgain;
+                }
+                else
+                {
                     data[i].Name = data[i].Name.Replace(data[i].Name, NewBrand);
+                    break;
                 }
             }
         }
-
+        
         public Brand[] GetAll()
         {
             return data;

@@ -21,9 +21,7 @@ namespace FinalProject
 
         public override string ToString()
         {
-            return $"Model ID: {ModelId}\n" +
-                $"Model Name: {ModelName}\n" +
-                $"Brand ID: {BrandId1}";
+            return $"Model ID: {ModelId} || Model Name: {ModelName} || Brand ID: {BrandId1}";
         }
     }
 }

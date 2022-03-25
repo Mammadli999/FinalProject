@@ -46,26 +46,21 @@ namespace FinalProject.Managers
             {
                 if (data[i].CarId == value)
                 {
-                    carSingle = $"Model ID: {data[i].ModelId1}\n" +
-                        $"Car ID: {data[i].CarId}\n" +
-                        $"Year: {data[i].Year}\n" +
-                        $"Price: {data[i].Price}\n" +
-                        $"Color: {data[i].Color}\n" +
-                        $"Engine: {data[i].Engine}";
+                    carSingle = $"Model ID: {data[i].ModelId1} || Car ID: {data[i].CarId} || Year: {data[i].Year:yyyy} || Price: {data[i].Price} || Color: {data[i].Color} || Engine: {data[i].Engine}";
                 }
             }
+            Console.WriteLine("#################Choosen Car##################");
             Console.WriteLine(carSingle);
         }
 
-        public void CarEditModelId(int value)
+        public void CarEditModelId(int value, int newmodelid)
         {
             for (int i = 0; i < data.Length; i++)
             {
                 if (data[i].CarId == value)
                 {
                     Console.WriteLine("Change the Model ID: ");
-                    int NewModelId = ScannerManager.ReadInteger("Enter the New ID: ");
-                    data[i].ModelId1 = NewModelId;
+                    data[i].ModelId1 = newmodelid;
                     break;
                 }
             }
@@ -77,7 +72,6 @@ namespace FinalProject.Managers
             {
                 if (data[i].CarId == value)
                 {
-                    Console.WriteLine("Change the Year: ");
                     DateTime NewYear = ScannerManager.ReadDate("Enter the New Year: ");
                     data[i].Year = NewYear;
                     break;
@@ -91,7 +85,6 @@ namespace FinalProject.Managers
             {
                 if (data[i].CarId == value)
                 {
-                    Console.WriteLine("Change the Price: ");
                     double NewPrice = ScannerManager.ReadDouble("Enter the New Price: ");
                     data[i].Price = NewPrice;
                     break;
@@ -105,7 +98,6 @@ namespace FinalProject.Managers
             {
                 if (data[i].CarId == value)
                 {
-                    Console.WriteLine("Change the Color: ");
                     string NewColor = ScannerManager.ReadString("Enter the New Color: ");
                     data[i].Color = data[i].Color.Replace(data[i].Color, NewColor);
                     break;
@@ -119,7 +111,6 @@ namespace FinalProject.Managers
             {
                 if (data[i].CarId == value)
                 {
-                    Console.WriteLine("Change the Engine: ");
                     double NewEngine = ScannerManager.ReadDouble("Enter the New Engine: ");
                     data[i].Engine = NewEngine;
                     break;
@@ -133,7 +124,6 @@ namespace FinalProject.Managers
             {
                 if (data[i].CarId == value)
                 {
-                    Console.WriteLine("Change the FuelType: ");
                     FuelType menuNum4 = ScannerManager.FuelType("Select the type a fuel: ");
 
                     switch (menuNum4)

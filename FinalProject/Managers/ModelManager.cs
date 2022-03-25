@@ -45,24 +45,38 @@ namespace FinalProject.Managers
             {
                 if (data[i].ModelId == value)
                 {
-                    ModelSingle = $"Model ID: {data[i].ModelId}\n" +
-                        $"Model's Name: {data[i].ModelName}\n" +
-                        $"Brand ID: {data[i].BrandId1}";
+                    ModelSingle = $"Model ID: {data[i].ModelId} || Model's Name: {data[i].ModelName} || Brand ID: {data[i].BrandId1}";
                 }
             }
+            Console.WriteLine("#################Choosen Model##################");
             Console.WriteLine(ModelSingle);
         }
 
+        public bool CheckModelName(string name)
+        {
+            name = name.ToLower().Trim();
 
-        public void ModelEditBrandId(int value)
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data != null)
+                {
+                    if (data[i].ModelName.ToLower() == name)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        public void ModelEditBrandId(int value, int newBrand)
         {
             for (int i = 0; i < data.Length; i++)
             {
                 if (data[i].ModelId == value)
                 {
                     Console.WriteLine("Change the Model Brand: ");
-                    int NewBrandId = ScannerManager.ReadInteger("Enter the ID of  New Brand: ");
-                    data[i].BrandId1 = NewBrandId;
+                    data[i].BrandId1 = newBrand;
                     break;
                 }
             }
@@ -72,15 +86,23 @@ namespace FinalProject.Managers
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i].ModelId == value)
+                Console.WriteLine("Change The Model Name: ");
+            EditAgain:
+                string NewModel = ScannerManager.ReadString("Enter the New Model: ");
+                CheckModelName(NewModel);
+                if (CheckModelName(NewModel) == false)
                 {
-                    Console.WriteLine("Change the Model Name: ");
-                    string NewBrand = ScannerManager.ReadString("Enter the New Model Name: ");
-                    data[i].ModelName = data[i].ModelName.Replace(data[i].ModelName, NewBrand);
+                    ScannerManager.PrintError("This Name is Already Used! ");
+                    goto EditAgain;
+                }
+                else
+                {
+                    data[i].ModelName = data[i].ModelName.Replace(data[i].ModelName, NewModel);
                     break;
                 }
             }
         }
+
 
         public Model[] GetAll()
         {
